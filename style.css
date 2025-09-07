@@ -77,8 +77,19 @@ p {
   width: 200px;
   height: 100px;
   z-index: -1; /* 가장 뒤로 */
-
 }
+
+#arrow {
+  position: absolute;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 270px;
+  width: 0px;
+  height: 50px;
+  z-index: 1; /* 가장 앞으로 */
+  transform-origin: top right; /* 기준점을 오른쪽 위로 설정 */
+}
+
 
 #scale {
   font-size: 24px;
