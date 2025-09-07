@@ -11,13 +11,14 @@
 
   <h1>🔬 탄성력 측정하기</h1>
 
-  <p>용수철을 옆으로 잡아당겨보세요! (PC: 드래그 / 모바일: 손가락으로 끌기)</p>
+  <p>센서를 옆으로 당겨 용수철을 늘려보세요! </p>
 
   
   <div id="spring-container">
     <div id="anchor"></div>
     <img id="spring" src="spring.png" alt="용수철">
     <img id="sensor" src="sensor.png" alt="센서" draggable="false">
+    <img id="ruler" src="ruler.png" alt="자">
   </div>
 
   <div id="scale">저울 눈금: 0 N</div>
@@ -33,7 +34,6 @@
     <div id="slider-wrapper">
       <label for="slider">늘어난 길이</label>
       <input type="range" id="slider" min="0" max="100" value="0">
-      <div id="slider-value">0 cm</div>
     </div>
   </div>
 

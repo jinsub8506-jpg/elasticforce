@@ -12,10 +12,10 @@ body {
   top: 0;
   left: 0;
   width: 960px;
-  height: 600px;
+  height: 800px;
   background-image: url("lab-background.png");
   background-repeat: no-repeat;
-  background-size: 960px 600px;
+  background-size: 760px 660px;
   z-index: -1;
 }
 
@@ -30,11 +30,14 @@ body {
 h1 {
   font-size: 32px;
   color: #333;
+  margin-left: 240px; 
+  text-align: left;   /* 필요 시 왼쪽 정렬 */
   margin-bottom: 20px;
 }
 
 p {
   font-size: 18px;
+  margin-left: 220px;
   margin-bottom: 40px;
 }
 
@@ -42,43 +45,60 @@ p {
 #spring-container {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 0px;
   height: 100px;
 }
 
 #anchor {
   width: 20px;
-  height: 100px;
+  height: 200px;
   background-color: black; /* 고정점 색상 */
 }
 
 #spring {
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: 150px;
   transition: width 0.1s ease;
 }
 
 #sensor {
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   cursor: grab;
+}
+
+#ruler {
+  position: absolute;
+  margin-top: 200px;
+  margin-bottom: 100px;
+  margin-left: 320px;
+  width: 200px;
+  height: 100px;
+  z-index: -1; /* 가장 뒤로 */
+
 }
 
 #scale {
   font-size: 24px;
   color: #0077cc;
+  margin-left: 120px;
   margin-bottom: 10px;
 }
 
 #slider-value {
-  font-size: 18px;
+  font-size: 24px;
+  color: #0077cc;
+  margin-left: 120px;
   margin-bottom: 30px;
 }
 
 #sliders-row {
   display: flex;
-  justify-content: center;
+
   gap: 60px;
+  margin-left: 50px;
   margin-top: 20px;
 }
 

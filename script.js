@@ -13,11 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateForce() {
     const x = parseInt(slider.value);
-    const force = (k * x).toFixed(2);
-    spring.style.width = `${200 + x}px`;
-    spring.style.height = `${50 + k * 500}px`;
+    const scaledLength = Math.round((x / 100) * 30); // 0~100 → 0~30cm로 변환
+    const force = (k * scaledLength).toFixed(2);
+    spring.style.width = `${300 + x}px`;
+    spring.style.height = `${100 + k * 500}px`;
     scale.textContent = `저울 눈금: ${force} N`;
-    sliderValue.textContent = `늘어난 길이: ${x} cm`;
+    sliderValue.textContent = `늘어난 길이: ${scaledLength} cm`;
     kSliderValue.textContent = `${k.toFixed(2)} N/cm (${(k * 100).toFixed(1)} N/m)`;
   }
 
@@ -38,7 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("mousemove", (e) => {
     if (!isDragging) return;
     const dx = e.clientX - startX;
-    let newLength = Math.min(Math.max(parseInt(slider.value) + dx, 0), 100);
+    let newLength = parseInt(slider.value) + dx;
+    newLength = Math.min(Math.max(newLength, 0), 100); // 슬라이더 범위 제한
     slider.value = newLength;
     updateForce();
     startX = e.clientX;
@@ -47,15 +49,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("mouseup", () => {
     if (isDragging) {
       isDragging = false;
-      slider.value = 0;
+      slider.value = 0; // 마우스를 놓으면 초기화
       updateForce();
       sensor.style.cursor = "grab";
     }
   });
 
-  sensor.addEventListener("mouseleave", () => {
-    if (isDragging) {
-      isDragging = false;
+  sensor.addEventListener("mouseleave", (e) => {
+    // 마우스가 눌려 있는 상태에서는 초기화하지 않음
+    if (!isDragging) {
       slider.value = 0;
       updateForce();
       sensor.style.cursor = "grab";
@@ -70,7 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
   sensor.addEventListener("touchmove", (e) => {
     if (!isDragging) return;
     const dx = e.touches[0].clientX - startX;
-    let newLength = Math.min(Math.max(parseInt(slider.value) + dx, 0), 100);
+    let newLength = parseInt(slider.value) + dx;
+    newLength = Math.min(Math.max(newLength, 0), 100);
     slider.value = newLength;
     updateForce();
     startX = e.touches[0].clientX;
@@ -79,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sensor.addEventListener("touchend", () => {
     isDragging = false;
-    slider.value = 0;
+    slider.value = 0; // 터치 끝나면 초기화
     updateForce();
   });
 
