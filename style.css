@@ -47,8 +47,9 @@ p {
   align-items: center;
   margin-top: 100px;
   margin-bottom: 100px;
-  margin-left: 0px;
+  margin-left: 20px;
   height: 100px;
+  position: relative; /* 추가! */
 }
 
 #anchor {
@@ -64,7 +65,7 @@ p {
 }
 
 #sensor {
-  width: 130px;
+  width: 150px;
   height: 130px;
   cursor: grab;
 }
@@ -88,6 +89,7 @@ p {
   height: 50px;
   z-index: 1; /* 가장 앞으로 */
   transform-origin: top right; /* 기준점을 오른쪽 위로 설정 */
+  transition: width 0.1s ease;
 }
 
 
